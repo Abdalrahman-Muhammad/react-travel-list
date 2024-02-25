@@ -1,3 +1,15 @@
+import { useState } from 'react';
+import { initialItems } from '../../public/data';
+import { Item } from './Item';
 export const PackingList = () => {
-  return <div className='list'>PackingList</div>;
+  const [items, setItems] = useState(initialItems);
+  return (
+    <div className='list'>
+      <ul>
+        {items.map((item) => (
+          <Item key={item.id} item={item} />
+        ))}
+      </ul>
+    </div>
+  );
 };
