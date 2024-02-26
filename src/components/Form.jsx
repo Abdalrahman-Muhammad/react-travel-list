@@ -1,7 +1,50 @@
-export const Form = () => {
+import { useState } from 'react';
+
+export const Form = ({ setItems }) => {
+  const [formData, setFormData] = useState({
+    description: '',
+    quantity: 1,
+    packed: false,
+    id: crypto.randomUUID(),
+  });
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]:
+        e.target.name === 'quantity' ? Number(e.target.value) : e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.description) return;
+    setItems((preItems) => [...preItems, formData]);
+    setFormData({
+      description: '',
+      quantity: 1,
+      packed: false,
+      id: crypto.randomUUID(),
+    });
+  };
+
   return (
-    <div className='add-form'>
+    <form className='add-form' onSubmit={handleSubmit}>
       <h3>What do you need for your 😍 trip?</h3>
-    </div>
+      <select name='quantity' onChange={handleChange} value={formData.quantity}>
+        {Array.from({ length: 20 }, (_, num) => (
+          <option key={num} value={num + 1}>
+            {num + 1}
+          </option>
+        ))}
+      </select>
+      <input
+        type='text'
+        placeholder='Item...'
+        onChange={handleChange}
+        name='description'
+        value={formData.description}
+      />
+      <button>ADD</button>
+    </form>
   );
 };
