@@ -1,6 +1,6 @@
 export const Stats = ({ items }) => {
   const packedItems = items.filter((item) => item.packed);
-  const percentage = (packedItems.length / items.length) * 100;
+  const percentage = (packedItems.length / items.length) * 100 || 0;
   return (
     <footer className='stats'>
       <em>
