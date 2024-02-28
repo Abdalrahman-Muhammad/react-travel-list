@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const Form = ({ setItems }) => {
+export const Form = ({ onAddItem }) => {
   const [formData, setFormData] = useState({
     description: '',
     quantity: 1,
@@ -18,7 +18,7 @@ export const Form = ({ setItems }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.description) return;
-    setItems((preItems) => [...preItems, formData]);
+    onAddItem(formData);
     setFormData({
       description: '',
       quantity: 1,
