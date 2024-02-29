@@ -4,6 +4,7 @@ import { Form, Logo, PackingList, Stats } from './components';
 
 export default function App() {
   const [items, setItems] = useState(data);
+
   const handleAddingItem = (item) => setItems((items) => [...items, item]);
 
   const handleDeleteItem = (id) => {
