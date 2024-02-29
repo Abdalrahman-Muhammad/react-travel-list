@@ -1,5 +1,5 @@
 import { Item } from './Item';
-export const PackingList = ({ items, deleteItem, togglePacking }) => {
+export const PackingList = ({ items, onDeleteItem, togglePacking }) => {
   return (
     <div className='list'>
       <ul>
@@ -8,7 +8,7 @@ export const PackingList = ({ items, deleteItem, togglePacking }) => {
             key={item.id}
             item={item}
             togglePacking={(e) => togglePacking(e, item.id)}
-            deleteItem={deleteItem}
+            onDeleteItem={onDeleteItem}
           />
         ))}
       </ul>

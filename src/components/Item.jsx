@@ -1,15 +1,15 @@
 export const Item = ({
   item: { description, quantity, packed, id },
-  deleteItem,
+  onDeleteItem,
   togglePacking,
 }) => {
   return (
     <li>
+      <input type='checkbox' onChange={togglePacking} checked={packed} />
       <span style={packed ? { textDecoration: 'line-through' } : {}}>
         {quantity} {description}
       </span>
-      <input type='checkbox' onChange={togglePacking} checked={packed} />
-      <button onClick={() => deleteItem(id)}>❌</button>
+      <button onClick={() => onDeleteItem(id)}>❌</button>
     </li>
   );
 };

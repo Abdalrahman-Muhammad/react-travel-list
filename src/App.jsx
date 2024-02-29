@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import { Form } from './components/Form';
-import { Logo } from './components/Logo';
-import { PackingList } from './components/PackingList';
-import { Stats } from './components/Stats';
 import data from '../public/data.js';
+import { Form, Logo, PackingList, Stats } from './components';
 
 export default function App() {
   const [items, setItems] = useState(data);
   const handleAddingItem = (item) => setItems((items) => [...items, item]);
-  const deleteItem = (id) => {
+
+  const handleDeleteItem = (id) => {
     setItems((pre) => pre.filter((pre) => pre.id != id));
   };
 
@@ -26,7 +24,7 @@ export default function App() {
       <Form onAddItem={handleAddingItem} />
       <PackingList
         items={items}
-        deleteItem={deleteItem}
+        onDeleteItem={handleDeleteItem}
         togglePacking={togglePacking}
       />
       <Stats items={items} />
