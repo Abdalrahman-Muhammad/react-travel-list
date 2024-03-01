@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import data from '../public/data.js';
 import { Form, Logo, PackingList, Stats } from './components';
+import useLocalStorage from './hooks/useLocalStorage.js';
 
 export default function App() {
-  const [items, setItems] = useState(data);
+  const [items, setItems] = useLocalStorage('items', data);
 
   const handleAddingItem = (item) => setItems((items) => [...items, item]);
 

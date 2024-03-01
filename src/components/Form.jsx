@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export const Form = ({ onAddItem }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useLocalStorage('formData', {
     description: '',
     quantity: 1,
     packed: false,
