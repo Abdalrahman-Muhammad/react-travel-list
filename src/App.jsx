@@ -20,9 +20,12 @@ export default function App() {
   };
 
   const handleClearList = () => {
+    const confirmed = window.confirm(
+      'Are you sure that you want to delete all items ?!'
+    );
+    if (!confirmed) return;
     setItems(() => []);
   };
-
   return (
     <div className='app'>
       <Logo />
