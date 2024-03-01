@@ -19,6 +19,10 @@ export default function App() {
     );
   };
 
+  const handleClearList = () => {
+    setItems(() => []);
+  };
+
   return (
     <div className='app'>
       <Logo />
@@ -27,6 +31,7 @@ export default function App() {
         items={items}
         onDeleteItem={handleDeleteItem}
         togglePacking={togglePacking}
+        handleClearList={handleClearList}
       />
       <Stats items={items} />
     </div>
